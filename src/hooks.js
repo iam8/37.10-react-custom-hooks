@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import {useState} from "react";
 
 
+
+/**
+ * Custom hook - toggle a state (true -> false, false -> true).
+ */
 function useFlip() {
-
     const [state, setState] = useState(true);
     const flipState = () => {
         setState(state => !state);
