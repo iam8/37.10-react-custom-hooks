@@ -35,10 +35,10 @@ function useFlip() {
 function useAxios(url) {
     const [array, setArray] = useState([]);
 
-    const setDataArray = async () => {
+    const setDataArray = async (restOfUrl) => {
         let result;
         try {
-            result = await axios.get(url);
+            result = await axios.get(`${url}${restOfUrl}`);
         } catch(err) {
             alert(err);
             return;
