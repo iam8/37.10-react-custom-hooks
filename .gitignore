@@ -24,3 +24,6 @@ yarn-error.log*
 
 # Temp directory
 /temp
+
+# Snapshots directory
+/src/__snapshots__
