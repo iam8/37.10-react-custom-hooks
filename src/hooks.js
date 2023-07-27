@@ -4,19 +4,19 @@ import { v4 as uuid } from "uuid";
 
 
 /**
- * Toggle a state (true -> false, false -> true).
+ * Toggle the 'isFacingUp' state of a card (true -> false, false -> true).
  *
  * Returns:
- * - Array of 2 elements: state (initially true), and a function to toggle this state.
+ * - Array of 2 elements: isFacingUp state (initially true), and a function to toggle this state.
  */
 function useFlip() {
-    const [state, setState] = useState(true);
+    const [isFacingUp, setIsFacingUp] = useState(true);
 
-    const flipState = () => {
-        setState(state => !state);
+    const flipisFacingUp = () => {
+        setIsFacingUp(state => !state);
     }
 
-    return [state, flipState];
+    return [isFacingUp, flipisFacingUp];
 }
 
 
@@ -30,13 +30,12 @@ function useFlip() {
  * Pop up an alert and add nothing to array if error occurs on Axios request.
  *
  * Returns:
- * - Array of 2 elements: state (initially empty array), and a function to make Axios request and
- *      add the response data to the state array.
+ * - Array of 2 elements: responses in state (initially empty array), and a function to make Axios * request and add the retrieved response data to the responses array.
  */
 function useAxios(baseUrl) {
-    const [array, setArray] = useState([]);
+    const [responses, setResponses] = useState([]);
 
-    const setDataArray = async (restOfUrl) => {
+    const addResponseData = async (restOfUrl="") => {
         let result;
         try {
             result = await axios.get(`${baseUrl}${restOfUrl}`);
@@ -45,10 +44,10 @@ function useAxios(baseUrl) {
             return;
         }
 
-        setArray(array => [...array, {...result.data, id: uuid()}]);
+        setResponses(array => [...array, {...result.data, id: uuid()}]);
     }
 
-    return [array, setDataArray];
+    return [responses, addResponseData];
 }
 
 
