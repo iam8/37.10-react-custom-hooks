@@ -21,8 +21,9 @@ function useFlip() {
 
 
 /**
- * Make an Axios GET request to the given URL and add the response data object to an array in
- * state.
+ * Make an Axios GET request to the API at the given base URL and add the response data object to
+ * an array in state. The final portion of the URL must be provided as an argument to the returned
+ * state-setter function.
  *
  * Generate and add a new unique ID with each new response data object.
  *
@@ -32,13 +33,13 @@ function useFlip() {
  * - Array of 2 elements: state (initially empty array), and a function to make Axios request and
  *      add the response data to the state array.
  */
-function useAxios(url) {
+function useAxios(baseUrl) {
     const [array, setArray] = useState([]);
 
     const setDataArray = async (restOfUrl) => {
         let result;
         try {
-            result = await axios.get(`${url}${restOfUrl}`);
+            result = await axios.get(`${baseUrl}${restOfUrl}`);
         } catch(err) {
             alert(err);
             return;
