@@ -32,7 +32,7 @@ function useFlip() {
  * - Array of 2 elements: state (initially empty array), and a function to make Axios request and
  *      add the response data to the state array.
  */
-async function useAxios(url) {
+function useAxios(url) {
     const [array, setArray] = useState([]);
 
     const setDataArray = async () => {
