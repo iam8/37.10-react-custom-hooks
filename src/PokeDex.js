@@ -4,7 +4,6 @@ import PokemonSelect from "./PokemonSelect";
 import PokemonCard from "./PokemonCard";
 import "./PokeDex.css";
 
-
 const BASE_URL = "https://pokeapi.co/api";
 
 
